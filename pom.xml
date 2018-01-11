@@ -3,6 +3,11 @@
   <groupId>com.hyz.evil</groupId>
   <artifactId>hdfs</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <properties>
+  	<maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
   <dependencies>
   	<dependency>
   		<groupId>org.apache.hadoop</groupId>
@@ -30,5 +35,74 @@
   		<groupId>junit</groupId>
   		<version>4.7</version>
   	</dependency>
+  	   <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>5.1.45</version>
+		</dependency>
+	<!-- https://mvnrepository.com/artifact/com.oracle/ojdbc6 -->
+	<dependency>
+	    <groupId>com.oracle</groupId>
+	    <artifactId>ojdbc6</artifactId>
+	    <version>12.1.0.1-atlassian-hosted</version>
+	</dependency>
+	
+  	
   </dependencies>
+  <build>
+	   <finalName>${project.artifactId}</finalName>
+			<plugins>
+				<!-- 资源文件拷贝插件 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.7</version>
+					<configuration>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				<!-- java编译插件 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.2</version>
+					<configuration>
+						<source>1.7</source>
+						<target>1.7</target>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				
+	             <!-- 打成jar包插件 -->
+	            <plugin>
+	                <groupId>org.apache.maven.plugins</groupId>
+	                <artifactId>maven-jar-plugin</artifactId>
+	                <version>2.4</version>
+	            </plugin>
+	            <!-- 打包保护yilai -->
+	            <!-- <plugin>  
+					  <artifactId>maven-assembly-plugin</artifactId>  
+					  <configuration>  
+					    <descriptorRefs>  
+					      <descriptorRef>jar-with-dependencies</descriptorRef>  
+					    </descriptorRefs>  
+					  <archive>  
+					    <manifest>  
+					      <mainClass></mainClass>  
+					    </manifest>  
+					  </archive>  
+					  </configuration>  
+					  <executions>  
+					    <execution>  
+					      <id>make-assembly</id>  
+					      <phase>package</phase>  
+					      <goals>  
+					        <goal>single</goal>  
+					      </goals>  
+					   </execution>  
+					  </executions>  
+					</plugin> -->
+		</plugins>
+	</build>
 </project>

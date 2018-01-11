@@ -1,7 +1,6 @@
 package com.hyz.evil.job;
-import java.io.File;
-
 import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
@@ -16,19 +15,23 @@ import com.hyz.evil.partitioner.FlowPartitioner;
 public class FlowJob {
 	
 	public static void main(String[] args) throws Exception {
-		//com.hyz.evil.job.FlowJob
-		File file = new File("/home/evil/out/");
-		if(file.exists()){
-			
-			File[] listFiles = file.listFiles();
-			for (File file2 : listFiles) {
-				file2.delete();
-			}
-			file.delete();
-		}
+		String base="/home/evil";
+		base=null;
+		String inPath=base==null?"/srcdata/":base+"/srcdata/";
+		String outPath=base==null?"/out/":base+"/out/";
+		
 		Configuration conf= new Configuration();
-		conf.set("fs.defaultFS", "hdfs://hadoopMaster10:9000");
-		//org.apache.hadoop.mapreduce.Job
+		if(base==null){
+			conf.set("fs.defaultFS", "hdfs://hadoopMaster10:9000");
+		}
+		
+		//删除输出位置
+		Path path = new Path(outPath);
+		FileSystem fileSystem = path.getFileSystem(conf);
+		if(fileSystem.exists(path)){
+			fileSystem.delete(path, true);
+		}
+		
 		Job job = Job.getInstance(conf);
 		
 		
@@ -48,8 +51,8 @@ public class FlowJob {
 		job.setPartitionerClass(FlowPartitioner.class);
 		job.setNumReduceTasks(4);
 		
-		FileInputFormat.setInputPaths(job, new Path("/srcdata/"));
-		FileOutputFormat.setOutputPath(job, new Path("/out/"));
+		FileInputFormat.setInputPaths(job, new Path(inPath));
+		FileOutputFormat.setOutputPath(job, new Path(outPath));
 		
 		boolean iscomplete = job.waitForCompletion(true);
 		System.exit(iscomplete?0:1);
