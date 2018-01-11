@@ -76,6 +76,7 @@ public class MyDBFormat {
 		job.setOutputFormatClass(TextOutputFormat.class);
 //		job.setOutputFormatClass(FileOutputFormat.class);
 		if(job.waitForCompletion(true)) {
+			
 			Job instance = Job.getInstance();
 			//instance.setJarByClass(MyDBFormat.class);
 			instance.setOutputKeyClass(Text.class);
