@@ -85,8 +85,7 @@ public class Question2 implements DBWritable,Writable{
 
 	@Override
 	public String toString() {
-		return "Question2 [USER_ID=" + USER_ID + ", QUESTIONNAIRE_ID=" + QUESTIONNAIRE_ID + ", TEST_QUESTIONS_ID="
-				+ TEST_QUESTIONS_ID + ", OPTIONS=" + OPTIONS + "]";
+		return "QUESTIONNAIRE_ID=" + QUESTIONNAIRE_ID + ",TEST_QUESTIONS_ID="+ TEST_QUESTIONS_ID + ",OPTIONS=" + OPTIONS;
 	}
 
 	
