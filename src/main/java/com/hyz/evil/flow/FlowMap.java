@@ -1,12 +1,10 @@
-package com.hyz.evil.Map;
+package com.hyz.evil.flow;
 
 import java.io.IOException;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
-
-import com.hyz.evil.bean.Flow;
 
 public class FlowMap extends Mapper<LongWritable, Text, Text, Flow> {
 	

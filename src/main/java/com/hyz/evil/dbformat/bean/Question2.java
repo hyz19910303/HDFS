@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.apache.hadoop.io.Writable;
+import org.apache.hadoop.io.WritableComparator;
 import org.apache.hadoop.mapreduce.lib.db.DBWritable;
 
 public class Question2 implements DBWritable,Writable{
@@ -87,7 +88,24 @@ public class Question2 implements DBWritable,Writable{
 	public String toString() {
 		return "QUESTIONNAIRE_ID=" + QUESTIONNAIRE_ID + ",TEST_QUESTIONS_ID="+ TEST_QUESTIONS_ID + ",OPTIONS=" + OPTIONS;
 	}
-
+	
+	
+	
+	/**
+	 * 比较
+	 * @author evil
+	 *
+	 */
+	
+	public static class QuestionComparator extends WritableComparator{
+		
+		@Override
+		public int compare(byte[] b1, int s1, int l1, byte[] b2, int s2, int l2) {
+			int result = WritableComparator.compareBytes(b1, s1, l1, b2, s2, l2);
+			return result;
+		}
+		
+	}
 	
 	
 	

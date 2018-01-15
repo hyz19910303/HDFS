@@ -1,29 +1,28 @@
-package com.hyz.evil.job;
+package com.hyz.evil.wdcount;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.KeyValueTextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-import com.hyz.evil.Map.LogMap;
-import com.hyz.evil.Reduce.LogReduce;
-
-public class LogJob {
+public class WordCountJob {
 	
 	public static void main(String[] args) throws Exception {
 		Configuration conf= new Configuration();
-		conf.set("fs.defaultFS", "hdfs://hadoopMaster10:9000");
-//		conf.set("fs.defaultFS", "hdfs://192.168.1.102:9000");
-		//org.apache.hadoop.mapreduce.Job
+		//conf.set("fs.defaultFS", "hdfs://hadoopMaster10:9000");
+		
 		Job job = Job.getInstance(conf);
 		
 		
-		job.setJarByClass(LogJob.class);
+		job.setJarByClass(WordCountJob.class);
 		
-		job.setMapperClass(LogMap.class);
-		job.setReducerClass(LogReduce.class);
+		job.setInputFormatClass(KeyValueTextInputFormat.class);
+		
+		job.setMapperClass(WCMap.class);
+		job.setReducerClass(WCReduce.class);
 
 		job.setMapOutputKeyClass(Text.class);
 		job.setMapOutputValueClass(LongWritable.class);
@@ -31,8 +30,8 @@ public class LogJob {
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(LongWritable.class);
 		
-		FileInputFormat.setInputPaths(job, new Path("/srcdata/"));
-		FileOutputFormat.setOutputPath(job, new Path("/out2/"));
+		FileInputFormat.setInputPaths(job, new Path("/home/evil/data/"));
+		FileOutputFormat.setOutputPath(job, new Path("/home/evil/outs/"));
 		
 		job.waitForCompletion(true);
 		

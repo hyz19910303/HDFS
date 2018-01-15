@@ -1,4 +1,4 @@
-package com.hyz.evil.job;
+package com.hyz.evil.flow;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
@@ -6,11 +6,6 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
-
-import com.hyz.evil.Map.FlowMap;
-import com.hyz.evil.Reduce.FlowReduce;
-import com.hyz.evil.bean.Flow;
-import com.hyz.evil.partitioner.FlowPartitioner;
 
 public class FlowJob {
 	

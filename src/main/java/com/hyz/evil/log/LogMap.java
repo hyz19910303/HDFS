@@ -1,4 +1,4 @@
-package com.hyz.evil.Map;
+package com.hyz.evil.log;
 
 import java.io.IOException;
 

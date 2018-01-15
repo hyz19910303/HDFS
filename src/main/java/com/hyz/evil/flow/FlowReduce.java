@@ -1,11 +1,9 @@
-package com.hyz.evil.Reduce;
+package com.hyz.evil.flow;
 
 import java.io.IOException;
 
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
-
-import com.hyz.evil.bean.Flow;
 
 public class FlowReduce extends Reducer<Text, Flow, Text, Flow> {
 	

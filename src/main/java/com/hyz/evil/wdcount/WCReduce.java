@@ -1,4 +1,4 @@
-package com.hyz.evil.Reduce;
+package com.hyz.evil.wdcount;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -7,7 +7,7 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-public class LogReduce extends Reducer<Text, LongWritable, Text, LongWritable> {
+public class WCReduce extends Reducer<Text, LongWritable, Text, LongWritable> {
 	
 	@Override
 	protected void reduce(Text text, Iterable<LongWritable> values,Context context) throws IOException, InterruptedException {

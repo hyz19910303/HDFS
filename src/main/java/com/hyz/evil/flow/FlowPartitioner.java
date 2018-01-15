@@ -1,9 +1,7 @@
-package com.hyz.evil.partitioner;
+package com.hyz.evil.flow;
 
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Partitioner;
-
-import com.hyz.evil.bean.Flow;
 
 /**
  * 分类

@@ -1,4 +1,4 @@
-package com.hyz.evil.bean;
+package com.hyz.evil.flow;
 
 import java.io.DataInput;
 import java.io.DataOutput;
