@@ -89,6 +89,7 @@ public class MyDBFormat {
 		job.setOutputValueClass(Text.class);
 		
 		
+		
 		FileOutputFormat.setOutputPath(job, new Path(outPath));
 		job.setOutputFormatClass(TextOutputFormat.class);
 //		job.setOutputFormatClass(FileOutputFormat.class);
